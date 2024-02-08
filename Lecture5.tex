@@ -1,0 +1,195 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[notitlepage,12pt]{article}
+
+% \title{\vspace{-3.0cm}Notes}
+% \date{}
+% \author{Naren}	
+
+\usepackage{marginnote}
+\usepackage[center]{titlesec}
+\usepackage[paper=a4paper,top=1in, left=1in, right=1in, bottom=1in,  heightrounded,
+marginparwidth=1in, marginparsep=3mm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amsthm, amssymb, amsfonts, amsmath, mathtools}
+\usepackage{graphicx, tikz, hyperref, enumitem, mathtools, mathrsfs, tikz-cd, adjustbox }
+\usetikzlibrary{calc,shapes}
+\usetikzlibrary{matrix}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{nameref}
+\usepackage{wrapfig}
+\usepackage{faktor}
+\usepackage{bbold}
+\usepackage{float}
+\usepackage{todonotes}
+\usepackage{parskip}
+\usepackage{cleveref}
+\usepackage{tikz}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\V}{\mathcal{V}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}[2]{E^{#1}_{#2}}
+\newcommand{\cf}{ \Gamma\mathrm{Hom}(\pi^*E_{\infty},\pi^*E_0)}
+\newcommand{\Eo}{E_0}
+\newcommand{\Ef}{E_{\infty}}
+\newcommand{\lin}{\operatorname*{lin}}
+
+\hypersetup{colorlinks=true, linkcolor=Red, citecolor=RedOrange, urlcolor=ForestGreen}
+
+\usetikzlibrary{matrix}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{claim}{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\usepackage[skins]{tcolorbox}
+
+% \renewcommand{\thetheorem}{\arabic{theorem}}
+% \renewcommand{\theexample}{\arabic{example}}
+\makeatletter
+\newtheoremstyle{para}
+  {\topsep}   % ABOVESPACE
+  {\topsep}   % BELOWSPACE
+  {\upshape}  % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {.}         % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {\thmnumber{#2}\@ifnotempty{#3}{ \thmnote{#3}}} % CUSTOM-HEAD-SPEC
+\makeatother
+\theoremstyle{para}{\normalfont}
+\newtheorem{para}[theorem]{\normalfont}
+\newtheorem*{para*}{para}
+\newcommand\descitem[1]{\item{\bfseries #1}\\}
+\DeclareMathOperator{\sq}{Sq}
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty}
+\usepackage{spectralsequences}
+\usepackage[T1]{fontenc}
+% \usepackage[tracking]{microtype}
+
+\usepackage[sc,osf]{mathpazo}   % With old-style figures and real smallcaps.
+\linespread{1.025}              % Palatino leads a little more leading
+
+%  % Euler for math and numbers
+%  \usepackage[euler-digits,small]{eulervm}
+% \AtBeginDocument{\renewcommand{\hbar}{\hslash}}
+%\usepackage{kpfonts}
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+\usepackage{soul}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+
+\usepackage[T1]{fontenc}
+\DeclareMathOperator{\colim}{colim}
+
+\begin{document}
+\begin{titlepage}
+    \title{Sequential Spectra\\
+    Lecture 5
+}
+\author{  }
+	\maketitle
+	\thispagestyle{empty}
+    	\toccontents
+\end{titlepage}
+
+We work in the category $\mathcal{T}$ of based( compactly generated weak Hausdorff spacess) and basepoint preserving maps. 
+\begin{definition}
+    A (sequential) spectrum $X$ is a sequence of spaces $X_n$ for $n\geq 0$ and structure maps $\sigma_n:\Sigma X_n=X_n\wedge S^1\to X_{n+1 }$. 
+  
+    A map of spectra $f:X\to Y$ is a sequence of maps $f_n:X_n\to Y_n$ such that eacg square of the following form commutes \marginnote{$S^1$ commutes with $\wedge$}
+    \[
+        \begin{tikzcd}
+\Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, "\Sigma f_n"'] & X_{n+1} \arrow[d, "\Sigma f_{n+1}"] \\
+\Sigma Y_n \arrow[r, "\sigma_n"']                         & Y_{n+1}                            
+\end{tikzcd}
+    \]
+
+    The category of spectra and the maps described above is denoted by $\mathcal{S}p$.
+\end{definition}
+Note that the bonding maps $\sigma_i:\Sigma X_i\to \Sigma_{i+1 }$ have adjoints $\tilde{\sigma}_i:\Omega X_i\to \Omega X_{i+1}$ and we could equivalently define a spectrum using the adjoint bonding maps. 
+
+\begin{definition}
+    The degree $k\in \mathbb{Z}$ stable homotopy group of a spectrum $X$ is the abelian group 
+    \[
+        \pi_k(X)=\colim_n \pi_{k+n}(X_n)
+    \]Here $\pi_{k+n }(X_n)\to \pi_{k+n+1 (X_{n+1})}$ maps the homotopy class of $\phi:S^{k+n } \to X_n$ to the class of $\sigma(S^1\wedge \phi):S^1\wedge S^{k+n } \to X_{n+1 }$.
+\end{definition}
+
+\begin{definition}
+    A map of spectra $f:X\to Y$ is a stable equivalence ($\pi_*$ isomorphism ) if the induced map $f_*:\pi_*(X)\to \pi_*(Y)$ is an isomorphism. 
+\end{definition}
+
+Consider $\mathcal{W}\subset \mathcal{S}p$ to be the wide subcategory of stable equivalences. The stable homotopy category $\mathrm{ho } \mathcal{S}p$ is the localization of $\mathcal{S}p$ at $\mathcal{W}$. The functor 
+\[
+    \mathcal{S}p\to \mathcal{S}p[\mathcal{W}^{-1 } ]=\mathrm{ho } \mathcal{S}p
+\] sends stable equivalences to isomorphisms. \marginnote{Initial functor?}
+
+\begin{example}
+    \begin{enumerate}
+    \item The suspension spectrum $\Sigma^{\infty } X$ of a space $X$ is the spectrum, with $(\Sigma^{\infty } X)_n=\Sigma^nX$, with the bonding maps $\operatorname*{id }:S^1\wedge \Sigma^iX\to \Sigma^{i+1 } X$. The suspension spectrum for an unpointed space $X$ is obtained by adding a disjoint basepoint: $\Sigma^{\infty } _+X\coloneqq \Sigma^{\infty } (X_+)$. \\
+    The homotopy groups of $\Sigma^{\infty } X$ are the stable homotopy groups of the space $X$. 
+        \item An important example of a suspension spectrum is the \textit{sphere spectrum} $$\mathbb{S}\coloneqq \Sigma^{\infty } S^0$$ This is the sequence of spheres $S^0,S^1,S^2,\dots$ \\
+        The homotopy groups of the sphere spectrum are called the \textit{stable stems }. They are the stable homotopy groups of $S^0$, often written $\pi_i^s\coloneqq \pi_i \mathbb{S}$.
+    \item The zero spectrum $\Sigma^{\infty}*$ is the suspension spectrum of a point, with the bonding maps 
+    \[
+        \Sigma(*)\cong * \to *
+    \] 
+    Every spectrum $X$ admits a unique maps of spectra $*\to X\to *$. $X$ is weakly contractible if one (equivalently both) of these maps are stable equivalences. \\
+    The suspension spectrum has all of its homotopy groups zero. 
+
+    Given two spectra $X$ and $Y$, the zero map $X\to Y$ is the unique map of spectra that factors through $*$
+    \[
+        \begin{tikzcd}
+X_n \arrow[rd] \arrow[rr] &              & Y_n \\
+                          & * \arrow[ru] &    
+\end{tikzcd}
+    \]
+    \end{enumerate}
+    \item Eilenberg-Maclane spaces are infinite loopspaces. We can define teh Eilenberg-Maclane spectrumm $HA$ by 
+    \[
+        (HA)_n=K(A,n)
+    \] with bonding maps adjoing to the canonical equivalences $K(A,n)\simeq \Omega K(A,n+1)$. We use the letter $H$ because the infinite loopspace represents cohomology with coefficients in $A$. \marginnote{todo}
+
+    The homotopy grops of $HA$ are given by 
+    \[
+        \pi_i HA=\begin{cases}
+            A&i=0\\
+            0&i\neq 0
+        \end{cases}
+    \]  
+    \item The complex $K$ theory spectrum $KU$
+    \[
+        KU_n=\begin{cases}
+            \mathbb{Z}\times BU&n \text{ even}\\
+            U &n \text{ odd}
+        \end{cases}
+    \]The structure maps adjoint to the equivalences 
+    \[
+        \Omega U\simeq \mathbb{Z}\times BU \quad \Omega(\mathbb{Z}\times BU)\simeq U
+    \] 
+    The homotopy groups of $KU$ are given by \marginnote{Bott element\\generator    }
+    \[
+        \pi_iKU=\begin{cases}
+            \mathbb{Z}&i \text{ even}\\
+            0& i \text{ odd}
+        \end{cases}
+    \]
+\end{example}
+\end{document}
