@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.9.14)  8 FEB 2024 13:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.9.14)  9 FEB 2024 12:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1076,33 +1076,28 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 l.156 
        [1]
 Package marginnote Info: Using workaround for absolute page number on input line 156.
-
-Overfull \hbox (6.20807pt too wide) in paragraph at lines 165--166
-[]\T1/pplj/m/n/12 Eilenberg-Maclane spaces are in-fi-nite loopspaces. We can de-fine teh Eilenberg-Maclane
- []
-
 Package marginnote Info: Margin note 4.1 is on absolute page 4 on input line 169.
 Package marginnote Info: right page because not two side mode on input line 169.
-Package marginnote Info: xpos seems to be 144.43799pt on input line 169.
+Package marginnote Info: xpos seems to be 223.10867pt on input line 169.
 Package marginnote Info: Margin note 4.2 is on absolute page 4 on input line 188.
 Package marginnote Info: right page because not two side mode on input line 188.
-Package marginnote Info: xpos seems to be 299.63373pt on input line 188.
-Total classes: 0 [2] (Lecture5.aux)
+Package marginnote Info: xpos seems to be 329.00842pt on input line 188.
+ Total classes: 0 [2] (Lecture5.aux)
 Package rerunfilecheck Info: File `Lecture5.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 37907 strings out of 476292
- 858446 string characters out of 5782260
+ 37916 strings out of 476292
+ 858502 string characters out of 5782260
  1866660 words of memory out of 5000000
- 57687 multiletter control sequences out of 15000+600000
+ 57693 multiletter control sequences out of 15000+600000
  556142 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,15n,85p,5054b,1211s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,15n,85p,5054b,1213s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fpl/fplbj8a.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmbb.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmr.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/mathpazo/fplmri.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/fpl/fplrc8a.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/Narendran/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Lecture5.pdf (3 pages, 130752 bytes).
+Output written on Lecture5.pdf (3 pages, 132192 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
+ 93 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -109,7 +109,7 @@ marginparwidth=1in, marginparsep=3mm]{geometry}
     	\toccontents
 \end{titlepage}
 
-We work in the category $\mathcal{T}$ of based( compactly generated weak Hausdorff spacess) and basepoint preserving maps. 
+We work in the category $\mathcal{T}$ of based( compactly generated weak Hausdorff ) spaces  and basepoint preserving maps. 
 \begin{definition}
     A (sequential) spectrum $X$ is a sequence of spaces $X_n$ for $n\geq 0$ and structure maps $\sigma_n:\Sigma X_n=X_n\wedge S^1\to X_{n+1 }$. 
   
@@ -147,7 +147,7 @@ Consider $\mathcal{W}\subset \mathcal{S}p$ to be the wide subcategory of stable 
     The homotopy groups of $\Sigma^{\infty } X$ are the stable homotopy groups of the space $X$. 
         \item An important example of a suspension spectrum is the \textit{sphere spectrum} $$\mathbb{S}\coloneqq \Sigma^{\infty } S^0$$ This is the sequence of spheres $S^0,S^1,S^2,\dots$ \\
         The homotopy groups of the sphere spectrum are called the \textit{stable stems }. They are the stable homotopy groups of $S^0$, often written $\pi_i^s\coloneqq \pi_i \mathbb{S}$.
-    \item The zero spectrum $\Sigma^{\infty}*$ is the suspension spectrum of a point, with the bonding maps 
+    \item \label{2}The zero spectrum $\Sigma^{\infty}*$ is the suspension spectrum of a point, with the bonding maps 
     \[
         \Sigma(*)\cong * \to *
     \] 
@@ -161,8 +161,8 @@ X_n \arrow[rd] \arrow[rr] &              & Y_n \\
                           & * \arrow[ru] &    
 \end{tikzcd}
     \]
-    \end{enumerate}
-    \item Eilenberg-Maclane spaces are infinite loopspaces. We can define teh Eilenberg-Maclane spectrumm $HA$ by 
+    
+    \item\label{3} Eilenberg-Maclane spaces are infinite loopspaces. We can define teh Eilenberg-Maclane spectrumm $HA$ by 
     \[
         (HA)_n=K(A,n)
     \] with bonding maps adjoing to the canonical equivalences $K(A,n)\simeq \Omega K(A,n+1)$. We use the letter $H$ because the infinite loopspace represents cohomology with coefficients in $A$. \marginnote{todo}
@@ -174,7 +174,7 @@ X_n \arrow[rd] \arrow[rr] &              & Y_n \\
             0&i\neq 0
         \end{cases}
     \]  
-    \item The complex $K$ theory spectrum $KU$
+    \item \label{4} The complex $K$ theory spectrum $KU$
     \[
         KU_n=\begin{cases}
             \mathbb{Z}\times BU&n \text{ even}\\
@@ -190,6 +190,15 @@ X_n \arrow[rd] \arrow[rr] &              & Y_n \\
             \mathbb{Z}&i \text{ even}\\
             0& i \text{ odd}
         \end{cases}
-    \]
+    \]\end{enumerate}
 \end{example}
+\begin{definition}
+    An $\Omega-$ spectrum (or fibrant spectrum) is a spectrum $X$ in which the adjunct bonding maps 
+    \[
+        X_n\xrightarrow[ ]{\simeq } \Omega X_{n+1 }
+    \] are weak homotopy equivalences. 
+\end{definition} The zeroeth space $X_0$ of an $\Omega$ -spectrum is an infinite loop space. 
+Examples \ref{2},\ref{3},\ref{4} above are $\Omega$-spectra. 
+
+
 \end{document}
