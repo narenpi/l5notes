@@ -1,9 +1,7 @@
 \PassOptionsToPackage{table}{xcolor}
 \documentclass[notitlepage,12pt]{article}
-
-% \title{\vspace{-3.0cm}Notes}
-% \date{}
-% \author{Naren}	
+\title {}
+\date{}
 
 \usepackage{marginnote}
 \usepackage[center]{titlesec}
@@ -55,8 +53,8 @@ marginparwidth=1in, marginparsep=3mm]{geometry}
 
 \usepackage[skins]{tcolorbox}
 
-% \renewcommand{\thetheorem}{\arabic{theorem}}
-% \renewcommand{\theexample}{\arabic{example}}
+\renewcommand{\thetheorem}{\arabic{theorem}} %remove section counter 
+\renewcommand{\theexample}{\arabic{example}}
 \makeatletter
 \newtheoremstyle{para}
   {\topsep}   % ABOVESPACE
@@ -74,19 +72,20 @@ marginparwidth=1in, marginparsep=3mm]{geometry}
 \newcommand\descitem[1]{\item{\bfseries #1}\\}
 \DeclareMathOperator{\sq}{Sq}
 \usepackage{abstract}
-\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\abstractname}{\color{brown}Lecture 5}    % clear the title
 \renewcommand{\absnamepos}{empty}
 \usepackage{spectralsequences}
 \usepackage[T1]{fontenc}
-% \usepackage[tracking]{microtype}
 
-\usepackage[sc,osf]{mathpazo}   % With old-style figures and real smallcaps.
-\linespread{1.025}              % Palatino leads a little more leading
+% \usepackage[sc,osf]{mathpazo}   % With old-style figures and real smallcaps.
+% \linespread{1.025}              % Palatino leads a little more leading
+ \usepackage[bitstream-charter]{mathdesign}
 
+% \usepackage{libertine}
 %  % Euler for math and numbers
 %  \usepackage[euler-digits,small]{eulervm}
 % \AtBeginDocument{\renewcommand{\hbar}{\hslash}}
-%\usepackage{kpfonts}
+
 \makeatletter
 \newcommand*{\toccontents}{\@starttoc{toc}}
 \makeatother
@@ -94,26 +93,21 @@ marginparwidth=1in, marginparsep=3mm]{geometry}
 \usepackage{soul}
 \newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
 
-
+\usepackage{}
 \usepackage[T1]{fontenc}
 \DeclareMathOperator{\colim}{colim}
+\usepackage{quiver}
 
 \begin{document}
-\begin{titlepage}
-    \title{Sequential Spectra\\
-    Lecture 5
-}
-\author{  }
-	\maketitle
-	\thispagestyle{empty}
-    	\toccontents
-\end{titlepage}
+\begin{abstract}\color{brown}
+    \textit{Sequential Spectra}
+\end{abstract}
 
 We work in the category $\mathcal{T}$ of based( compactly generated weak Hausdorff ) spaces  and basepoint preserving maps. 
 \begin{definition}
     A (sequential) spectrum $X$ is a sequence of spaces $X_n$ for $n\geq 0$ and structure maps $\sigma_n:\Sigma X_n=X_n\wedge S^1\to X_{n+1 }$. 
   
-    A map of spectra $f:X\to Y$ is a sequence of maps $f_n:X_n\to Y_n$ such that eacg square of the following form commutes \marginnote{$S^1$ commutes with $\wedge$}
+    A map of spectra $f:X\to Y$ is a sequence of maps $f_n:X_n\to Y_n$ such that each square of the following form commutes \marginnote{$S^1$ commutes\\ with $\wedge$}
     \[
         \begin{tikzcd}
 \Sigma X_n \arrow[r, "\sigma_n"] \arrow[d, "\Sigma f_n"'] & X_{n+1} \arrow[d, "\Sigma f_{n+1}"] \\
@@ -200,5 +194,229 @@ X_n \arrow[rd] \arrow[rr] &              & Y_n \\
 \end{definition} The zeroeth space $X_0$ of an $\Omega$ -spectrum is an infinite loop space. 
 Examples \ref{2},\ref{3},\ref{4} above are $\Omega$-spectra. 
 
+\begin{proposition}
+    If $X$ is a spectrum, there exists an $\Omega -$spectrum $RX$ with a stable equivalence 
+    \[
+        X\to RX
+    \] which is natural. 
+\end{proposition}
 
+$R$ here is a right deformation of the category $\mathcal{S}p$. \marginnote{homotopy \\category?}
+
+For a spectrum $X$, with spaces $X_n$ and bonding maps $\sigma_n$, $RX$ is defined as 
+\[
+    (RX)_n=\operatorname*{hocolim }(X_n\xrightarrow[ ]{\sigma_n}\Omega X_{n+1}\xrightarrow[ ]{\Omega \sigma_{n+1 }}\Omega^{2 } X_{n+2 }\xrightarrow[ ]{ }\cdots ) 
+\]The commuting maps 
+\[\begin{tikzcd}
+	X & {\Omega X_{n+1}} & {\Omega^2 X_{n+2}} & {} \\
+	{\Omega X_{n+1}} & {\Omega^2 X_{n+2}} & {\Omega^3 X_{n+3}} & \cdots
+	\arrow["{\sigma_n}"', from=1-1, to=2-1]
+	\arrow["{\sigma_n}", from=1-1, to=1-2]
+	\arrow["{\mathrm{id}}", dashed, from=1-2, to=2-1]
+	\arrow["{\Omega \sigma_{n+1}}"', from=2-1, to=2-2]
+	\arrow["{\Omega \sigma_{n+1}}", from=1-2, to=2-2]
+	\arrow["{\Omega \sigma_{n+1}}", from=1-2, to=1-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow["{\mathrm{id}}", dashed, from=1-3, to=2-2]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=2-3, to=2-4]
+\end{tikzcd}\]
+induce a map of homotopy colimits
+\[
+    \operatorname*{hocolim }_{m\to \infty}\Omega^mX_{n+m }\xrightarrow[ ]{\simeq }\operatorname*{hocolim }_{m\to \infty }\Omega^{1+m } X_{n+1+m }\xrightarrow[ ]{\simeq }\Omega (\operatorname*{hocolim }_{m\to \infty      }\Omega^mX_{n+1+m})
+\]We define the bonding maps $(RX)_n\xrightarrow[ ]{\simeq }\Omega(RX)_{n+1}$ to be the composite map from above. 
+
+\begin{definition}
+    For any spectrum $X$, we define its infinite loop space to be 
+    \begin{align*}
+        \Omega^{\infty}: \mathcal{S}p&\to \mathcal{T}\\
+        X&\mapsto (RX)_0
+    \end{align*}
+
+     For example, $\Omega^{\infty }\mathbb{S}=\colim \Omega^n \mathbb{S} ^n$. 
+\end{definition}
+\begin{proposition}
+    The functors $\Omega^{\infty}$ and $\Sigma^{\infty }$ are adjoint 
+  \[\begin{tikzcd}
+	{\mathcal{S}p} & {} & {\mathcal{T}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Omega^{\infty}}", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\Sigma^{\infty}}", curve={height=-12pt}, from=1-3, to=1-1]
+	\arrow["\dashv", draw=none, from=0, to=1]
+\end{tikzcd}\]
+\end{proposition}\marginnote{remark about QX}
+
+\begin{definition}
+    If $X\in \mathcal{S}p$ and $K\in \mathcal{T}$, then we can define the tensor or smash product $K\wedge X$ by lettign $(K\wedge X)_n=K\wedge X_n$ and the bonding maps $K\wedge X_n\wedge S^1\to K\wedge X_{n+1 }$. 
+
+We define \begin{align*}
+    \Sigma:\mathcal{S}p&\to \mathcal{S}p\\
+    X&\mapsto S^1\wedge X
+\end{align*}
+
+\end{definition}
+
+\begin{definition}
+
+    If $X$ is a spectrum and $K$ is a based space, we form the cotensor or function spectrum $F(K,X)$ by applying $\mathrm{Map } _*(K,-)$ to every spectrum level of $X$. So $F(K,X)$ is the spectrum whose $n$th level is the space of based maps $\mathrm{ Map } _*(K,X_n)$. The bonding maps are 
+    \[
+         \mathrm{ Map } _*(K,X_n)\xrightarrow[ ]{\mathrm{ Map } _*(K, \Omega X_{n+1 })}\mathrm{Map } _*(K, \Omega X_{n+1})\xleftrightarrow[]{ \cong }\Omega \mathrm{Map } _*(K,X_{n+1 })
+    \]
+    
+    As a special case, we define 
+    \begin{align*}
+        \Omega: \mathcal{S}p&\to \mathcal{S}p\\
+        X&\mapsto F(S^1,X)
+    \end{align*}
+\end{definition}
+
+These two operations are adjoint functors on spectra. 
+
+\begin{proposition}\marginnote{PROOF }
+    For any spectrum $X$ , there are isomorphisms 
+    \[
+        \pi_{k+1 }(\Sigma X)\cong \pi_k(X)\cong \pi_{k-1 }(\Omega X)
+    \]
+\end{proposition}
+\begin{corollary}
+    There are natural stable equivalences $X\to \Sigma \Omega X$ and $\Sigma \Omega X\to X$. 
+\end{corollary}Thus $\Sigma$ and $\Omega$ are inverse functors upto stable equivalence. 
+
+\begin{definition}
+    A cofibers sequence is a sequence of the form 
+    \[
+        X \xrightarrow[ ]{f }Y\to C_f
+    \]where $Cf$ is the homotopy cofiber, which is defined as 
+    \[
+        (Cf)_n=\text{homotopy cofiber of }(X \xrightarrow[ ]{f_n }Y_n)
+    \]
+
+    Similarly a fiber sequence is anything of the form 
+    \[
+         Fg\to Y \xrightarrow[ ]{g }Z
+    \]where $Fg$ is the homotopy fiber. 
+\end{definition}
+
+\begin{theorem}
+     For each fiber sequence $X\to Y\to Z$, we get a long exact sequence
+     \[
+        \dots\to [W,X] \xrightarrow[ ]{f_* }[W,Y]\xrightarrow[ ]{g_* }[W,Z]\to \dots
+     \]
+\end{theorem}
+
+\begin{theorem}\marginnote{check proof}
+     For each cofiber sequence $X\to Y\to Z$, we get a long exact sequence
+     \[
+       \cdots \leftarrow [X,W]\leftarrow[Y,W]\leftarrow[Z,W]\leftarrow \cdots 
+     \]
+     and also a long exact sequence
+     \[
+        [W,X]\xrightarrow[ ]{f_* }[W,Y]\xrightarrow[ ]{i_* }[W,Z]
+     \]
+\end{theorem}
+\begin{proof}
+     Suppose we have a map $g: W \rightarrow Y$ so that $i g \simeq 0$. Let $h$ be a null homotopy of this composite. This is precisely a map $b: C W \rightarrow C f$. We thus have the following diagram, where the horizontal parts are cofibre sequences,
+\[\begin{tikzcd}
+	X & Y & Cf & {\Sigma X} & {\Sigma Y} & \cdots \\
+	W & W & CW & {\Sigma W} & {\Sigma W} & \cdots
+	\arrow["{-\Sigma^{-1} j}"', tail reversed, no head, from=1-1, to=2-1]
+	\arrow["g"', tail reversed, no head, from=1-2, to=2-2]
+	\arrow["h"', tail reversed, no head, from=1-3, to=2-3]
+	\arrow["k"', dashed, tail reversed, no head, from=1-4, to=2-4]
+	\arrow["{\Sigma g}"', tail reversed, no head, from=1-5, to=2-5]
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["i", from=1-2, to=1-3]
+	\arrow["{-1}"', from=2-4, to=2-5]
+	\arrow["1"', from=2-1, to=2-2]
+	\arrow["i"', from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=2-5, to=2-6]
+\end{tikzcd}\]
+Because these are cofibre sequences, we get the dashed arrow $k$ making the diagram commute for free, and the rest is automatic. But $\Sigma$ has an inverse in SHC. Applying $\Sigma^{-1}$ gives us a map $\Sigma^{-1} k: W \rightarrow X$, making the necessary diagram commute (functoriality of $\Sigma^{-1}$ ). This proves exactness.
+
+\end{proof}
+
+\begin{lemma}
+    For each map of spectra $f:X\to Y$ there is a natrual stable equivalence 
+    \[
+        \varepsilon:\Sigma Ff\to Cf
+    \] or equivalently its adjoint. 
+\end{lemma}
+\begin{proof}
+     We define $\varepsilon$ by
+     \begin{align*}
+        \varepsilon: \Sigma(X\times_Y PY )&\to Y\cup_X CX \\
+            (t,x,\gamma)&=\begin{cases}
+                \gamma(2t)&t\leq 1/2 \\
+                (x,2-2t)& t\geq 1/2
+            \end{cases}
+     \end{align*}
+We check the commutativity upto homotopy of the following squares by looking  at the suspension of the fiber sequence of $f$ and cofiber sequence of $f$. 
+     \[\begin{tikzcd}
+	{\Sigma\Omega X} & {\Sigma\Omega Y} & {\Sigma(X\times_Y PY)} & {\Sigma X} & {\Sigma Y} \\
+	X & Y & {Y\cup_X CX} & {\Sigma X} & {\Sigma Y}
+	\arrow["{\Sigma\Omega f}", from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\varepsilon", from=1-3, to=2-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=2-3, to=2-4]
+	\arrow["{\text{flip}}"', from=1-4, to=2-4]
+	\arrow["{\text{flip}}", from=1-5, to=2-5]
+	\arrow["{\Sigma f}"', from=2-4, to=2-5]
+	\arrow["{\Sigma f}", from=1-4, to=1-5]
+\end{tikzcd}\]This gives that $\varepsilon$ is a $\pi_*$ isomorphism. 
+\end{proof}
+
+\begin{proposition}
+    $X\to Y\to Z$ is a cofiber sequence iff it is a fiber sequence. 
+\end{proposition}
+
+\begin{proof}
+     We look at the squares in the diagram 
+     \[\begin{tikzcd}
+	X & Y & Cf & {\Sigma X} & {\Sigma Y} \\
+	X & Y & Z & Cg & {\Sigma Y} \\
+	\\
+	&&& {\Sigma (Y\times _Z F(I,Z))}
+	\arrow[Rightarrow, no head, from=1-2, to=2-2]
+	\arrow["{h\cup g}", from=1-3, to=2-3]
+	\arrow[Rightarrow, no head, from=1-5, to=2-5]
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["g"', from=2-2, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow["{\Sigma(f\times h)}"', curve={height=18pt}, from=1-4, to=4-4]
+	\arrow["{h\cup Cf}", from=1-4, to=2-4]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\varepsilon"',"\simeq", from=4-4, to=2-4]
+\end{tikzcd}\] We have
+\begin{align*}
+    X\to Y\to Z \text{ a cofiber sequence}&\iff h\cup g \text{ is a stable equivalence}\\
+        &\iff h\cup Cf \text{ is a stable equivalence   }\\
+        &\iff \Sigma(f\times h) \text{ is a stable equivalence  }\\
+        &\iff f\times h \text{ is a stable equivalence}\\
+        &\iff X\to Y\to Z \text{ is a fiber sequence} \\
+\end{align*}
+
+\end{proof}
+\begin{lemma}
+    A commuting square of spectra is a homotopy pushout iff it is a homotopy pullback. 
+\end{lemma}
+
+\begin{proposition}\marginnote{just this?}
+    Finite coproducts and finite products coincide in $\mathcal{S}p$
+    \[
+        X\vee Y\cong X\times Y 
+    \]
+\end{proposition}
 \end{document}
